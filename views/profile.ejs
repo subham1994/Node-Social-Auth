@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="/css/style.css"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+        <nav class="blue">
+            <div class="container">
+                <a href="#" class="brand-logo">O-AUTH</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/logout">LOGOUT</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6 l3">
+                        <div class="card account-card">
+
+                            <% if (user.local.username) { %>
+                            <div class="card-image">
+                                <img src="http://semantic-ui.com/images/avatar2/large/matthew.png" width="200" height="250">
+                            </div>
+                            <% } %>
+
+                            <div class="card-content">
+                                <span class="card-title"><strong>Local Account</strong></span><br>
+                                <% if (user.local.username) { %>
+                                <strong>id</strong>: <%= user._id %><br>
+                                <strong>username</strong>: <%= user.local.username %><br>
+                                <p class="wrap"><strong>password</strong>: <%= user.local.password %></p>
+                                <% } %>
+                            </div>
+                            <% if (user.local.username) { %>
+                                <div class="card-action">
+                                    <a href="/unlink/local">Unlink Account</a>
+                                </div>
+                            <% } else { %>
+                            <div class="card-action">
+                                <a href="/connect/local">Connect Account</a>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card account-card">
+
+                            <% if (user.facebook.token) { %>
+                                <div class="card-image">
+                                    <img src="<%= user.facebook.photo %>" width="200" height="250">
+                                </div>
+                            <% } %>
+
+                            <div class="card-content">
+                                <span class="card-title" style="color: #4e69a2;">
+                                    <i class="fa fa-facebook"></i>
+                                    <strong> Facebook Account</strong>
+                                </span><br>
+
+                                <% if (user.facebook.token) { %>
+                                <strong>id</strong>: <%= user.facebook.id %><br>
+                                <strong>email</strong>: <%= user.facebook.email %><br>
+                                <p class="wrap"><strong>name</strong>: <%= user.facebook.name %></p>
+                                <% } %>
+
+                            </div>
+
+                            <% if (user.facebook.token) { %>
+                                <div class="card-action">
+                                    <a href="/unlink/facebook">Unlink Account</a>
+                                </div>
+                                <% } else { %>
+                                <div class="card-action">
+                                    <a href="/connect/facebook">Connect Account</a>
+                                </div>
+                            <% } %>
+
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l3">
+                        <div class="card account-card">
+
+                            <% if (user.google.token) { %>
+                                <div class="card-image">
+                                    <img src="<%= user.google.photo %>" width="200" height="250">
+                                </div>
+                            <% } %>
+
+                            <div class="card-content">
+                                <span class="card-title" style="color: #dc4a38;">
+                                    <i class="fa fa-google-plus"></i>
+                                    <strong> Google Account</strong>
+                                </span><br>
+
+                                <% if (user.google.token) { %>
+                                    <strong>id</strong>: <%= user.google.id %><br>
+                                    <strong>email</strong>: <%= user.google.email %><br>
+                                    <p class="wrap"><strong>name</strong>: <%= user.google.name %></p>
+                                <% } %>
+
+                            </div>
+                            <% if (user.google.token) { %>
+                                <div class="card-action">
+                                    <a href="/unlink/google">Unlink Account</a>
+                                </div>
+                            <% } else { %>
+                                <div class="card-action">
+                                    <a href="/connect/google">Connect Account</a>
+                                </div>
+                            <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/materialize.min.js"></script>
+        <script>
+            // equalize card heights
+            $(document).ready(function(){
+                var maxHeight = 0;
+                var cardContents = $(".card.account-card .card-content");
+                cardContents.each(function(){
+                    if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+                });
+                cardContents.height(maxHeight);
+            });
+        </script>
+    </body>
+</html>
