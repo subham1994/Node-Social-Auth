@@ -29,7 +29,7 @@
 
                             <% if (user.local.username) { %>
                             <div class="card-image">
-                                <img src="http://semantic-ui.com/images/avatar2/large/matthew.png" width="200" height="250">
+                                <img class="materialboxed" src="http://semantic-ui.com/images/avatar2/large/matthew.png" width="200" height="250">
                             </div>
                             <% } %>
 
@@ -56,7 +56,7 @@
 
                             <% if (user.facebook.token) { %>
                                 <div class="card-image">
-                                    <img src="<%= user.facebook.photo %>" width="200" height="250">
+                                    <img class="materialboxed" src="<%= user.facebook.photo %>" width="200" height="250">
                                 </div>
                             <% } %>
 
@@ -91,7 +91,7 @@
 
                             <% if (user.google.token) { %>
                                 <div class="card-image">
-                                    <img src="<%= user.google.photo %>" width="200" height="250">
+                                    <img class="materialboxed" src="<%= user.google.photo %>" width="200" height="250">
                                 </div>
                             <% } %>
 
