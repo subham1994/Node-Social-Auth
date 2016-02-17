@@ -43,3 +43,7 @@
     text-align: center;
     line-height: 36px;
 }
+
+.btn-block {
+    display: block;
+}
