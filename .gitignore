@@ -1,1 +1,4 @@
 node_modules/
+static/
+config/auth.js
+config/database.js
