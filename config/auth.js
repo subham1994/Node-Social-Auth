@@ -10,8 +10,8 @@
             'callbackUrl': 'https://node-socialauth-live.herokuapp.com/auth/facebook/callback'
         },
         'googleAuth': {
-            'clientId': '392367740117-5b726hhseee72854n91i6hvuoromql65.apps.googleusercontent.com',
-            'clientSecret': 'LZThR1yinI2Uhiw6ybM07gyf',
+            'clientId': '375772615882-fibcv0bhdu6oq1qejmrptdd2sb8di9qv.apps.googleusercontent.com',
+            'clientSecret': 'Ztqt7zzQzKUnQDL6V3T3ko1E',
             'callbackUrl': 'https://node-socialauth-live.herokuapp.com/auth/google/callback'
         }
     };
