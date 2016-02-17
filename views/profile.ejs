@@ -34,7 +34,7 @@
                             <% } %>
 
                             <div class="card-content">
-                                <span class="card-title"><strong>Local Account</strong></span><br>
+                                <span class="card-title"><i class="material-icons">assignment_ind</i><strong> Local Account</strong></span><br>
                                 <% if (user.local.username) { %>
                                 <strong>id</strong>: <%= user._id %><br>
                                 <strong>username</strong>: <%= user.local.username %><br>
@@ -138,6 +138,7 @@
                     if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
                 });
                 cardContents.height(maxHeight);
+                Materialize.fadeInImage('img')
             });
         </script>
     </body>

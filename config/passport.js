@@ -41,7 +41,7 @@
                                 return done(null, newUser);
                             });
                         } else {
-                            var user = new req.user;
+                            var user = req.user;
                             user.local.username = username;
                             user.local.password = user.generateHash(password);
                             user.save(function(err) {
@@ -92,6 +92,14 @@
                                 return done(err);
                             }
                             if(user) {
+                                if(!user.token) {
+                                    user.token = accessToken;
+                                    user.save(function(err) {
+                                        if(err) {
+                                            throw err;
+                                        }
+                                    });
+                                }
                                 return done(null, user);
                             } else {
                                 var newUser = new User();
@@ -140,6 +148,14 @@
                                 return done(err);
                             }
                             if(user) {
+                                if(!user.token) {
+                                    user.token = accessToken;
+                                    user.save(function(err) {
+                                        if(err) {
+                                            throw err;
+                                        }
+                                    });
+                                }
                                 return done(null, user);
                             } else {
                                 var newUser = new User();

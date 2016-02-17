@@ -83,5 +83,30 @@
             successRedirect : '/profile',
             failureRedirect : '/'
         }));
+
+        app.get('/unlink/local', function(req, res) {
+            var user = req.user;
+            user.local.username = undefined;
+            user.local.password = undefined;
+            user.save(function(err) {
+                res.redirect('/profile');
+            });
+        });
+
+        app.get('/unlink/facebook', function(req, res) {
+            var user = req.user;
+            user.facebook.token = undefined;
+            user.save(function(err) {
+                res.redirect('/profile');
+            });
+        });
+
+        app.get('/unlink/google', function(req, res) {
+            var user = req.user;
+            user.google.token = undefined;
+            user.save(function(err) {
+                res.redirect('/profile');
+            });
+        });
     };
 }());
