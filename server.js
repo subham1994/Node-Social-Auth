@@ -10,6 +10,7 @@
     var bodyParser = require('body-parser');
     var passport = require('passport');
     var flash = require('connect-flash');
+    var mongoSessionStore = require('connect-mongo')(session);
     var configDb = require('./config/database');
     var app = express();
     var PORT = process.env.PORT || 3000;
@@ -22,7 +23,12 @@
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(morgan('dev'));
     app.use(cookieParser());
-    app.use(session({secret: "hardest secret to guess !!", saveUninitialized: true, resave: true}));
+    app.use(session({
+        secret: "hardest secret to guess !!",
+        saveUninitialized: true,
+        resave: true,
+        store: new mongoSessionStore({mongooseConnection: mongoose.connection})
+    }));
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(flash());
